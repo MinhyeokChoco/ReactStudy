@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리액트 컴포넌트</title>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    // 리액트 컴포넌트
+    // 컴포넌트를 잘 만들고 싶으면 목적성을 자주 사용할 것 같은 UI를 분류해서 컴포넌트로 제작하면 좋다.
+
+    // sudo chmod -R 777 /Users/leeminhyeok/Documents/MH/React
+
+    // 컴포넌트 바닐라 JS로 만들어보기.
+    // 컴포넌트의 속성은 2가지
+    // props state
+    // class 컴포넌트, 함수형 컴포넌트
+
+    class Component {
+        target; // 전달할 값 props
+        state; // 상태 초기값
+
+        constructor(target) {
+            this.target = target;
+            this.setup();
+        }
+
+        setup() {
+            // 컴포넌트를 초기 설정
+            console.log("컴포넌트 초기 세팅")
+        }
+
+        template() {
+            // 컴포넌트 html 템플릿을 반환
+            return "<div>난 타겟의 내용</div>"
+        }
+
+        render() {
+            // 컴포넌트의 타겟의 요소를 렌더링, render 호출 꼭 해야 함
+            this.target.innerHTML = this.template();
+            this.setEvent();
+        }
+
+        setEvent() {
+            // 컴포넌트의 요소에 이벤트 등록
+            console.log("컴포넌트 이벤트");
+
+            // 상태 변수 전환은
+            this.state = { id: 1 }; // 절대 재할당 X
+            // 함수를 호출해서 값을 할당해줘야 한다.
+        }
+
+        // 상태 업데이트
+        setState(_state) {
+            // setState 함수ㅠ를 호출해서만 값을 변경
+            // this.state = {id : 1, name: "soon"}
+            // _state = {id : 2, age : 30}
+            this.state = { ...this.state, ..._state };
+            // 최종 상태가 업데이트된 값은 ? {id : 2, age : 30, name : "soon"}
+
+            // 리액트는 상태가 전환되면 반응한다.
+            // 렌더링 현재 컴포넌트를 다시 리렌더링한다.
+            this.render();
+            console.log("상태 업데이트 완료");
+            // 리렌더링 중요 *** 별 3개 드립니다.
+            // 리렌더링이 되지 않으면 화면이 바뀌지 않는다.
+            // 부모가 리렌더링 되면 자식으로 있는 컴포넌트도 모두 다 리렌더링 된다.
+        }
+
+        // 바닐라 스크립트
+        // 깊은 복사 순서 변경
+    }
+
+    // 가상돔
+    class VirtualDom {
+        constructor(target) {
+            // 가상돔의 target은 root
+            this.component = new App(target);
+        }
+
+        render() {
+            this.component.render();
+        }
+    }
+
+    // App class 컴포넌트
+    // App은 컴포넌트
+    class App extends Component {
+        // 부모에 있는 setup 함수 선언문에 오버라이드, 즉 합쳐진다
+        setup() {
+            // 초기 세팅 상태값
+            this.state = { item: ["id : 01", "pw : 123"] }
+        }
+
+        // ejs같이 html을 완성해서 반환
+        template() {
+            // html을 완성해서 반환
+            const { item } = this.state;
+            return `
+                <ul>
+                    ${item.map((i) => `<li>${i}</li>`)}
+                </ul>
+                <button>추가</button>
+            `;
+        }
+
+        setEvent() {
+            console.log(this.target);
+            this.target.querySelector('button').addEventListener('click', (e) => {
+                // 변경 되기 전 상태값을 가져오고
+                const { item } = this.state;
+                // 버튼을 누를때 마다 값이 상태값이 변경
+                // 상태를 변경하고 싶을 때는 setState 함수를 통해서만 변경을 해라
+                this.setState({ item: [...item, `추가된 아이템 ${item.length + 1}`] })
+                console.log(this.state);
+            });
+        }
+    }
+
+    const root = new VirtualDom(document.querySelector('#root'));
+    root.render();
+</script>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리액트 라이브러리</title>
+    <!-- 리액트 18버전 -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- 리액트 18버전의 돔 -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- ES5 문법으로 transfile -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- ES6 -> ES5 트랜스파일 === babel : 월요일 할 예정-->
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+<!-- type="text/babel" : script의 내용을 babel로 트랜스파일 하겠다. -->
+<script type="text/babel">
+    // class 컴포넌트
+    // 컴포넌트로 생성할 클래스에 상속
+    class LoginBtn extends React.Component {
+        constructor(props) {
+            // 부모 생성자 호출
+            super(props);
+            // 이렇게 해야 변수 내용을 사용할 수 있음, 생성자 안에서
+            // state 키 값을 정해진 이름으로 사용해야 한다.
+            // 컴포넌트의 상태 값 (바뀌면 리렌더링 된다.)
+            this.state = {
+                isLogin: false
+            }
+        }
+
+        // jsx 문법에서 html 영역에 {} 중괄호를 사용하면 javascript를 사용하겠다.
+        // reactDom
+        // onClick 대문자로 변경 on 뒤에
+        // onClick과 같은 이벤트에는 {} 실행식을 넣으면 반환값이 할당되는 것. (한번 호출됨)
+        // onClick 클릭 될 때마다 호출 해야 하니 함수의 값
+        // button onClick={() => this.state = { id: 1 }} => 절대 안됨
+        // this.setState : state, 즉 상태를 전환해주고 싶다면 무조건 setState를 사용해야 한다.
+
+        // state는 이전 내용이 보관되어 있고, 다시 리렌더링 할 때 이전값을 가져와서 할당해준다.
+        render() {
+            let a = 1;
+            return (
+                <div>
+                    <div>
+                        <button onClick={() => { this.setState({ isLogin: !this.state.isLogin }) }}>
+                            {this.state.isLogin ? "LogOut" : "Login"}</button>
+                    </div>
+                    이건 일반 변수 : {a}
+                    <button onClick={() => { a++; console.log(a) }}>증가</button>
+                </div>
+            )
+        }
+    }
+
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+    root.render(
+        <LoginBtn />
+    );
+</script>
+
+</html>

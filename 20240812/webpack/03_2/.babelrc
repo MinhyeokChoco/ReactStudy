@@ -1,0 +1,6 @@
+{
+    "presets": [
+        "@babel/preset-env", // es6 es5로 변환
+        "@babel/preset-react" // jsx js로 변환
+    ]
+}

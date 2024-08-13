@@ -1,0 +1,7 @@
+{
+    "plugins": [
+        "@babel/plugin-transform-modules-commonjs"
+    ]
+}
+// plugins : 사용할 플러그인 작성
+// @babel/plugin-transform-modules-commonjs : commonjs 형식의 모듈 시스템으로 변환 해준다.
