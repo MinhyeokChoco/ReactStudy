@@ -40,7 +40,7 @@ export default class BoomGame extends Component {
 
     setBoom = () => {
         const count = this.state.boomCount;
-        return (Array(count).fill(null).map(() => <Boom gameOver={this.gameOver}
+        return (Array(count).fill(null).map((props, index) => <Boom gameOver={this.gameOver}
             setValue={index === this.state.boom ? this.setCount : this.setCount} over={this.state.over} />))
     }
 
