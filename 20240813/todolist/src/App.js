@@ -35,4 +35,5 @@ export default App;
 // 리스트 CSS 좀 더 만지기
 // 위아래 가운데 정렬 하고 오른쪽에 버튼 추가
 // 버튼 누르면 삭제 기능 구현해보기
+// 참고 사이트
 // https://velog.io/@hsecode/React-%EC%B4%88%EA%B0%84%EB%8B%A8-%ED%88%AC%EB%91%90%EB%A6%AC%EC%8A%A4%ED%8A%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0
