@@ -69,7 +69,28 @@
 }
 
 .todo-item {
-  width: 400px;
+  width: 32%;
   height: 50px;
-  border: 1px solid lightblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: chocolate;
+}
+
+.btnDel {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  background-color: aquamarine;
+  border: none;
+  font-family: "paybooc-light", sans-serif;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.btnDel:hover {
+  width: 45px;
+  height: 45px;
 }
