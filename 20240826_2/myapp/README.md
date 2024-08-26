@@ -35,6 +35,10 @@ dispatch
 action
 store 정의 알아보기
 
+오늘 강의 다시 보기
+로그인 회원가입 만들기
+블로그 작성
+
 ```sh
 npm install recoil
 ```
