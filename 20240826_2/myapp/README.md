@@ -135,7 +135,7 @@ export const Count = () => {
     });
 
     export const pagination = selector({
-        key : "pagination", // 고유식별자 이름
+        key : "pagination", // 고유 식별자 이름
 
         // 상태의 값을 참조할 때
         get : async ({get}) => {
@@ -155,3 +155,7 @@ export const Count = () => {
 
     });
 ```
+
+Recoil로
+로그인 회원가입
+백이랑 프론트 다 해서 만들어보기
