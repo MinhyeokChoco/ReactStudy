@@ -151,9 +151,9 @@ export const Count = () => {
 ## react의 비동기 처리
 ```js
 import { Suspense } from "react";
-import {Login} from "./Login";
+import { Login } from "./Login";
 // Suspense : 컴포넌트에서 비동기 처리를 해서 로딩중일때 보여줄 화면을 구성할수 있다.
-// fallback의 props 값으로 보여줄 컴포넌트의 내용을 전달
+// fallback의 p rops 값으로 보여줄 컴포넌트의 내용을 전달
 
 const Suspense = ({fallback, children}) => {
     await  <Login />
@@ -163,7 +163,7 @@ const Suspense = ({fallback, children}) => {
 const App = () => {
     <RecoilRoot>
         <Suspense fallback={<>로딩중...</>}>
-            자식으로 전달한 컴포넌트의 비동기 코드가 종료되면 Login컴포넌트를 보여준다
+            자식으로 전달한 컴포넌트의 비동기 코드가 종료되면 Login 컴포넌트를 보여준다
             <Login />
         </Suspense>
     </RecoilRoot>
