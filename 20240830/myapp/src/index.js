@@ -1,0 +1,30 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+      suspense: true,
+    }
+  }
+})
+root.render(
+  // 만약 client={QueryClient}로 주면 어떻게 되는지 여쭤보기
+  <QueryClientProvider client={queryClient} >
+    <App />
+    <ReactQueryDevtools initialIsOpen={true} />
+  </QueryClientProvider>
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
