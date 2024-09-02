@@ -10,4 +10,4 @@ function TodoBoard({ todoList, handleDelete }) {
     )
 }
 
-export default TodoBoard;
+export default TodoBoard
