@@ -13,6 +13,7 @@ export const Form = () => {
     // 콜백함수의 매개변수로 현재 상태를 할당해준다.
 
     const order = useSelector(state => state.orderReducer.order);
+    console.log(order);
     const dispatch = useDispatch();
 
     useEffect(() => {
